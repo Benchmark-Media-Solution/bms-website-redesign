@@ -205,7 +205,7 @@ const page = () => {
     setIsOpen2(false);
   };
 
-    const [urlInput, setUrlInput] = useState("");
+  const [urlInput, setUrlInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   let [isOpen5, setIsOpen5] = useState(false);
 
@@ -247,14 +247,15 @@ const page = () => {
             <h1 className="font-sora font-extrabold xl:text-[70px] md:text-[50px] text-[30px] leading-[31px] md:leading-13 xl:leading-[104%] text-white-1100 text-shadow-xl uppercase">
               Erhöhe deine Sichtbarkeit bei Google!
             </h1>
-            <h4 className="text-white-1100 max-w-107.5 w-full mx-auto xl:text-[32px] text-2xl leading-7.25 xl:leading-[124%] font-medium mt-4 mb-12">
+            <h4 className="text-white-1100 max-w-107.5 w-full mx-auto xl:text-[32px] md:text-2xl text-lg md:leading-7.25 leading-[124%] xl:leading-[124%] font-medium mt-4 mb-12">
               Mehr Traffic. Mehr Umsatz. Mit deiner SEO Agentur
             </h4>
-            <CtaButton
-              className=""
-              href="/"
-              label="Kostenlose SEO-Analyse anfordern"
-            />
+            <div className="inline-block sm:w-auto w-full" onClick={open}>
+              <CtaButton
+                className=""
+                href=""
+                label="Kostenlose SEO-Analyse anfordern"
+              /></div>
             <p className="text-white-1100 font-normal text-sm md:text-center text-start leading-[124%] mt-5">
               Finde heraus, wie SEO dein Ranking verbessert.
             </p>
@@ -298,7 +299,7 @@ const page = () => {
             </h2>
           </div>
         </div>
-        <div className='lg:bg-[url("/images/case-bg.png")] lg:pb-0 sm:pb-[194px] sm:bg-[url("/images/case-bg-tab.png")] bg-[url("/images/case-bg-mobile.png")] bg-cover lg:bg-center sm:bg-bottom bg-top md:mt-16 mt-10 xl:mt-22'>
+        <div className='lg:bg-[url("/images/case-bg.png")] lg:pb-0 sm:pb-[382px] sm:bg-[url("/images/case-bg-tab.png")] bg-[url("/images/case-bg-mobile.png")] bg-cover lg:bg-center sm:bg-bottom bg-top md:mt-16 mt-10 xl:mt-22'>
           <div className="max-w-310 md:px-10 px-4 xl:px-5 mx-auto w-full">
             <h3 className="xl:text-[32px] md:text-2xl text-lg leading-5.5 md:leading-7.25 text-center font-medium text-white-1100 xl:leading-[124%] max-w-135 w-full mx-auto">
               <span className="text-orange-1100">+ 421%</span> mehr Sichtbarkeit
@@ -815,7 +816,7 @@ const page = () => {
           <div className="flex md:max-w-135 max-w-full xl:max-w-249.25 xl:flex-row flex-col w-full mx-auto bg-white-1100 rounded-2xl ">
             <div className="bg-white-1100 md:rounded-tl-2xl rounded-t-2xl md:rounded-bl-2xl  xl:py-7.25 py-6 px-6 xl:mx-0 md:mx-auto mx-0 md:w-[42%]  xl:w-[36%] w-full">
               <Link
-                href="/"
+                href=""
                 className="xl:mb-13.5 mb-9 md:mb-11.25 inline-flex"
               >
                 <img
@@ -877,7 +878,7 @@ const page = () => {
             <SeoArticleSlider />
             <div className="text-center pt-8">
               <CtaButton
-                href="/"
+                href=""
                 label="Alle Artikel ansehen"
                 variant="transparent"
               />
@@ -895,8 +896,8 @@ const page = () => {
             <img
               src="/images/3d-rendring-img.webp"
               className={`md:max-w-full origin-bottom-left max-w-[250px] transition-all duration-700 ease-out ${isVisible
-                  ? ' scale-108'
-                  : ' scale-100'
+                ? ' scale-111'
+                : ' scale-100'
                 }`}
               alt="SEO Agentur CTA"
             />
@@ -1080,7 +1081,7 @@ const page = () => {
                     Suchmaschinenoptimierung profitiert.
                   </p>
                 </div>
-                <div className="xl:hidden mb-4 block bg-black-1200 rounded-2xl shadow-4xl md:px-10 px-4 py-6 md:py-8">
+                <div className="xl:hidden md:mb-6 mb-4 block bg-black-1200 rounded-2xl shadow-4xl md:px-10 px-4 py-6 md:py-8">
                   <h4 className="text-white-1100 md:text-2xl font-semibold md:tracking-normal -tracking-[0.18px] text-base leading-[22px] md:leading-[140%] mb-4">
                     <span className="text-orange-1100">
                       Wie lange dauert es,
@@ -1334,12 +1335,12 @@ const page = () => {
               <img
                 src="/images/trading-img.png"
                 alt=""
-                className="w-full xl:h-auto h-62 object-cover object-center xl:block hidden rounded-2xl"
+                className="w-full xl:h-full h-62 object-cover object-center xl:block hidden rounded-2xl"
               />
               <img
                 src="/images/trading-img-tablet.jpg"
                 alt=""
-                className="w-full xl:h-auto h-62 object-cover object-center xl:hidden block rounded-2xl"
+                className="w-full xl:h-full h-62 object-cover object-center xl:hidden block rounded-2xl"
               />
             </div>
             <div className="xl:flex-1 w-full h-160.5 overflow-y-scroll pr-5 md:pr-10 custom-scroll">
@@ -1467,11 +1468,13 @@ const page = () => {
               Du fragst dich: Ist das überhaupt relevant für mich? Wir zeigen es
               dir
             </h3>
-            <CtaButton
-              className="seo-btn"
-              href="/"
-              label="SEO-Analyse anfordern"
-            />
+            <div className="inline-block sm:w-auto w-full" onClick={open}>
+              <CtaButton
+                className="seo-btn"
+                href=""
+                label="SEO-Analyse anfordern"
+              />
+            </div>
             <p className="text-white-1100 sm:text-left text-center font-normal mt-3 text-xs leading-[140%]">
               Finde heraus, wie PPC deine Reichweite erhöht.
             </p>
@@ -1495,12 +1498,14 @@ const page = () => {
               </span>
               der SEO Agentur
             </h2>
-            <CtaButton
-              className="mt-10 seo-btn"
-              href="/"
-              label="Kostenloses Kennenlernen"
-              variant="transparent"
-            />
+            <div className="inline-block sm:w-auto w-full" onClick={open5}>
+              <CtaButton
+                className="mt-10 seo-btn"
+                href=""
+                label="Kostenloses Kennenlernen"
+                variant="transparent"
+              />
+            </div>
           </div>
           <div className="flex gap-8 xl:mt-22 md:mt-16 mt-12 xl:flex-row flex-col">
             <div className="flex-1 w-full">
@@ -1560,7 +1565,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img1.jpg"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62"
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62"
                   />
                 </div>
               </div>
@@ -1569,7 +1574,7 @@ const page = () => {
               <img
                 src="/images/Onpage-img.jpg"
                 alt=""
-                className="w-full object-cover object-center  rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover object-center  rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -1648,7 +1653,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img2.jpg"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -1657,7 +1662,7 @@ const page = () => {
               <img
                 src="/images/offPage-img.jpg"
                 alt=""
-                className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -1706,7 +1711,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img3.jpg"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -1715,7 +1720,7 @@ const page = () => {
               <img
                 src="/images/technisches-img.webp"
                 alt=""
-                className="w-full object-cover  object-center rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover  object-center rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -1788,7 +1793,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img4.jpg"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -1797,7 +1802,7 @@ const page = () => {
               <img
                 src="/images/local-seo-img.jpg"
                 alt=""
-                className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -1855,7 +1860,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img5.jpg"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -1864,7 +1869,7 @@ const page = () => {
               <img
                 src="/images/E-Commerce-img.jpg"
                 alt=""
-                className="w-full object-cover object-center rounded-2xl xl:h-auto h-62"
+                className="w-full object-cover object-center rounded-2xl xl:h-full h-62"
               />
             </div>
           </div>
@@ -1935,7 +1940,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img6.webp"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -1944,7 +1949,7 @@ const page = () => {
               <img
                 src="/images/mobile-seo-img.jpg"
                 alt=""
-                className="w-full object-cover  object-center rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover  object-center rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -2027,7 +2032,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img7.webp"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -2036,7 +2041,7 @@ const page = () => {
               <img
                 src="/images/Content-img.jpg"
                 alt=""
-                className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -2108,7 +2113,7 @@ const page = () => {
                   <img
                     src="/images/strategien-img8.webp"
                     alt=""
-                    className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                    className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
                   />
                 </div>
               </div>
@@ -2117,7 +2122,7 @@ const page = () => {
               <img
                 src="/images/Analyse-img.webp"
                 alt=""
-                className="w-full object-cover object-center rounded-2xl xl:h-auto h-62 "
+                className="w-full object-cover object-center rounded-2xl xl:h-full h-62 "
               />
             </div>
           </div>
@@ -2136,7 +2141,12 @@ const page = () => {
               </div>
               <img
                 src="/images/big-circle.webp"
-                className="absolute 2xl:-top-[108px] md:-top-[150px] md:bottom-auto bottom-0 left-5 md:-left-10 2xl:left-7 3xl:-left-1.5 h-[264px] xl:h-[436px]"
+                className="absolute 2xl:-top-[108px] md:-top-[150px] lg:block md:hidden md:bottom-auto bottom-0 left-5 md:-left-10 2xl:left-7 3xl:-left-1.5 h-[264px] xl:h-[436px]"
+                alt=""
+              />
+              <img
+                src="/images/big-circle-tab.png"
+                className="absolute 2xl:-top-[108px] md:-top-[150px] md:block hidden lg:hidden md:bottom-auto bottom-0 left-5 md:-left-10 2xl:left-7 3xl:-left-1.5 h-[264px] xl:h-[436px]"
                 alt=""
               />
             </div>
@@ -2146,11 +2156,13 @@ const page = () => {
                   Erfahre, warum du noch keine Kunden über Deine Website
                   bekommst!
                 </h3>
-                <CtaButton
-                  className="seo-btn"
-                  href="/"
-                  label="Jetzt Kennenlerngespräch buchen"
-                />
+                <div className="text-center mt-8 xl:mt-12 inline-block sm:w-auto w-full" onClick={open}>
+                  <CtaButton
+                    className="seo-btn"
+                    href=""
+                    label="Jetzt Kennenlerngespräch buchen"
+                  />
+                </div>
                 <p className="text-white-1100 text-xs leading-[140%] font-normal mt-3">
                   Kostenlos & unverbindlich – nur für kurze Zeit verfügbar.
                 </p>
@@ -2160,7 +2172,12 @@ const page = () => {
         </div>
         <img
           src="/images/circle-shape.svg"
-          className="absolute top-1/2 md:-top-10 2xl:top-9.25 left-0"
+          className="absolute top-1/2 md:-top-10 lg:hidden md:hidden 2xl:top-9.25 left-0"
+          alt=""
+        />
+        <img
+          src="/images/circle-shape-tab.png"
+          className="absolute top-1/2 md:-top-14 -z-10 md:block hidden lg:hidden 2xl:top-9.25 left-0"
           alt=""
         />
       </section>
@@ -2177,7 +2194,7 @@ const page = () => {
               </span>
             </h2>
             <CtaButton
-              href="/"
+              href=""
               label="Kostenloses Kennenlernen"
               className="mt-10 seo-btn"
               variant="transparent"
@@ -2309,43 +2326,38 @@ const page = () => {
           </div>
           <div className="xl:hidden md:grid hidden grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-8 xl:mt-22 mt-16">
             <div className="col-span-3 grid grid-cols-2 gap-4">
-              <div className="card-google-analytics bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
+              <div className="card-semrush-logo bg-white-1100 min-h-[224px] rounded-2xl shadow-5xl p-8 flex items-center justify-center">
+                <img src="/images/semrush-img.png" alt="" />
+              </div>
+              <div className="card-semrush-text flex flex-col justify-between bg-black-1200 min-h-[224px] rounded-2xl shadow-4xl p-4 md:p-6">
+                <div>
+                  <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
+                    SEMrush{" "}
+                  </h4>
+                  <p className="text-white-1100 font-normal text-xs leading-[140%]">
+                    Wertvolle Keywords werden identifiziert und die Konkurrenz
+                    analysiert – alles mit SEMrush.
+                  </p>
+                </div>
+                <Link
+                  href={"/"}
+                  className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
+                >
+                  <img src="/images/up-arw.svg" alt="" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="card-google-analytics flex flex-col justify-between bg-black-1200 min-h-[224px] rounded-2xl shadow-4xl p-4 md:p-6">
+              <div>
                 <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
-                  Google <br /> Analytics{" "}
+               Mit   Google <br /> Analytics{" "}
                 </h4>
                 <p className="text-white-1100 font-normal text-xs leading-[140%]">
                   Es werden tiefgehende Einblicke in das Verhalten deiner Nutzer
                   gewonnen.{" "}
                 </p>
-                <Link
-                  href={"/"}
-                  className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
-                >
-                  <img src="/images/up-arw.svg" alt="" />
-                </Link>
               </div>
-              <div className="card-ga-logo bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
-                <img src="/images/signal2.png" alt="" />
-              </div>
-            </div>
-            <div className="card-hero-image-top xl:col-span-2 border border-solid border-orange-1100 rounded-2xl">
-              <img
-                src="/images/Analytics-img.webp"
-                alt=""
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </div>
-            <div className="card-semrush-logo bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
-              <img src="/images/semrush-img.png" alt="" />
-            </div>
-            <div className="card-semrush-text bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
-              <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
-                SEMrush{" "}
-              </h4>
-              <p className="text-white-1100 font-normal text-xs leading-[140%]">
-                Wertvolle Keywords werden identifiziert und die Konkurrenz
-                analysiert – alles mit SEMrush.
-              </p>
               <Link
                 href={"/"}
                 className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
@@ -2353,34 +2365,136 @@ const page = () => {
                 <img src="/images/up-arw.svg" alt="" />
               </Link>
             </div>
+            <div className="card-ga-logo bg-white-1100 rounded-2xl min-h-[224px] shadow-5xl p-8 flex items-center justify-center">
+              <img src="/images/signal2.png" alt="" />
+            </div>
+            <div className="card-hero-image-top xl:col-span-2 border min-h-[224px] border-solid border-orange-1100 rounded-2xl">
+              <img
+                src="/images/Analytics-img.webp"
+                alt=""
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
             <div className="col-span-3 grid grid-cols-2 gap-4">
-              <div className="card-ahrefs-logo bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
+              <div className="card-ahrefs-text flex flex-col justify-between min-h-[224px] bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
+                <div>
+                  <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
+                    Ahrefs{" "}
+                  </h4>
+                  <p className="text-white-1100 font-normal text-xs leading-[140%]">
+                    Das Linkprofil wird optimiert und Backlinks analysiert, die
+                    für dein Wachstum entscheidend sind.
+                  </p>
+                </div>
+                <Link
+                  href={"/"}
+                  className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
+                >
+                  <img src="/images/up-arw.svg" alt="" />
+                </Link>
+              </div>
+              <div className="card-ahrefs-logo min-h-[224px] bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
                 <img src="/images/ahrefs.png" alt="" />
               </div>
-              <div className="card-ahrefs-text  bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
+            </div>
+            <div className="card-hero-image-bottom min-h-[224px] xl:col-span-2 border border-solid border-orange-1100 rounded-2xl">
+              <img
+                src="/images/sistrix-tab-img.png"
+                alt=""
+                className="w-full h-full object-cover object-bottom rounded-2xl"
+              />
+            </div>
+              <div className="card-sistrix-logo min-h-[224px] bg-white-1100 rounded-2xl shadow-5xl px-5 flex items-center justify-center">
+              <img
+                src="/images/sistrx-img.png"
+                className="h-[66px] md:h-[70px] object-cover"
+                alt=""
+              />
+            </div>
+            <div className="card-sistrix-text flex flex-col justify-between min-h-[224px] bg-black-1200 rounded-2xl shadow-4xl p-6">
+              <div>
+                <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
+                  SISTRIX{" "}
+                </h4>
+                <p className="text-white-1100 font-normal text-xs leading-[140%]">
+                  Die Sichtbarkeit deiner Website wird überwacht, um Potenziale
+                  zur Optimierung zu erkennen.
+                </p>
+              </div>
+              <Link
+                href={"/"}
+                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
+              >
+                <img src="/images/up-arw.svg" alt="" />
+              </Link>
+            </div>
+            
+
+          
+          </div>
+          <div className="md:hidden grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 xl:mt-22 mt-16">
+            <div className="card-semrush-logo min-h-[224px] bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
+              <img src="/images/semrush-img.png" alt="" />
+            </div>
+            <div className="card-semrush-text flex flex-col justify-between min-h-[224px] bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
+              <div>
+                <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
+                  SEMrush{" "}
+                </h4>
+                <p className="text-white-1100 font-normal text-xs leading-[140%]">
+                  Wertvolle Keywords werden identifiziert und die Konkurrenz
+                  analysiert – alles mit SEMrush.
+                </p>
+              </div>
+              <Link
+                href={"/"}
+                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
+              >
+                <img src="/images/up-arw.svg" alt="" />
+              </Link>
+            </div>
+            <div className="card-google-analytics flex flex-col justify-between min-h-[224px] bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
+              <div>
+                <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
+               Mit   Google <br /> Analytics{" "}
+                </h4>
+                <p className="text-white-1100 font-normal text-xs leading-[140%]">
+                  Es werden tiefgehende Einblicke in das Verhalten deiner Nutzer
+                  gewonnen.{" "}
+                </p>
+              </div>
+              <Link
+                href={"/"}
+                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
+              >
+                <img src="/images/up-arw.svg" alt="" />
+              </Link>
+            </div>
+            <div className="card-ga-logo min-h-[224px] bg-white-1100 rounded-2xl shadow-5xl p-4 flex items-center justify-center">
+              <img src="/images/signal2-m.png" className="scale-[1.5]" alt="" />
+            </div>
+
+            <div className="card-ahrefs-logo min-h-[224px] bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
+              <img src="/images/ahrefs.png" alt="" />
+            </div>
+            <div className="card-ahrefs-text min-h-[224px] flex flex-col justify-between bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
+              <div>
                 <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
                   Ahrefs{" "}
                 </h4>
                 <p className="text-white-1100 font-normal text-xs leading-[140%]">
-                  Das Linkprofil wird optimiert und Backlinks analysiert, die
-                  für dein Wachstum entscheidend sind.
+                  Das Linkprofil wird optimiert und Backlinks analysiert, die für
+                  dein Wachstum entscheidend sind.
                 </p>
-                <Link
-                  href={"/"}
-                  className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
-                >
-                  <img src="/images/up-arw.svg" alt="" />
-                </Link>
               </div>
+              <Link
+                href={"/"}
+                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
+              >
+                <img src="/images/up-arw.svg" alt="" />
+              </Link>
             </div>
-            <div className="card-hero-image-bottom xl:col-span-2 border border-solid border-orange-1100 rounded-2xl">
-              <img
-                src="/images/sistrix-img.jpg"
-                alt=""
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </div>
-            <div className="card-sistrix-text bg-black-1200 rounded-2xl shadow-4xl p-6">
+            <div className="card-sistrix-text min-h-[224px] bg-black-1200 rounded-2xl shadow-4xl p-6">
               <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
                 SISTRIX{" "}
               </h4>
@@ -2395,102 +2509,10 @@ const page = () => {
                 <img src="/images/up-arw.svg" alt="" />
               </Link>
             </div>
-            <div className="card-sistrix-logo bg-white-1100 rounded-2xl shadow-5xl px-5 flex items-center justify-center">
+            <div className="card-sistrix-logo min-h-[224px] bg-white-1100 rounded-2xl shadow-5xl px-5 flex items-center justify-center">
               <img
                 src="/images/sistrx-img.png"
-                className="h-[66px] md:h-auto object-cover"
-                alt=""
-              />
-            </div>
-          </div>
-          <div className="md:hidden grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 xl:mt-22 mt-16">
-            <div className="card-google-analytics bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
-              <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
-                Google <br /> Analytics{" "}
-              </h4>
-              <p className="text-white-1100 font-normal text-xs leading-[140%]">
-                Es werden tiefgehende Einblicke in das Verhalten deiner Nutzer
-                gewonnen.{" "}
-              </p>
-              <Link
-                href={"/"}
-                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
-              >
-                <img src="/images/up-arw.svg" alt="" />
-              </Link>
-            </div>
-            <div className="card-ga-logo bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
-              <img src="/images/signal2.png" alt="" />
-            </div>
-            <div className="card-hero-image-top xl:col-span-2 border border-solid border-orange-1100 rounded-2xl">
-              <img
-                src="/images/Analytics-img.webp"
-                alt=""
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </div>
-            <div className="card-semrush-logo bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
-              <img src="/images/semrush-img.png" alt="" />
-            </div>
-            <div className="card-semrush-text bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
-              <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
-                SEMrush{" "}
-              </h4>
-              <p className="text-white-1100 font-normal text-xs leading-[140%]">
-                Wertvolle Keywords werden identifiziert und die Konkurrenz
-                analysiert – alles mit SEMrush.
-              </p>
-              <Link
-                href={"/"}
-                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
-              >
-                <img src="/images/up-arw.svg" alt="" />
-              </Link>
-            </div>
-            <div className="card-ahrefs-logo bg-white-1100 rounded-2xl shadow-5xl p-8 flex items-center justify-center">
-              <img src="/images/ahrefs.png" alt="" />
-            </div>
-            <div className="card-ahrefs-text  bg-black-1200 rounded-2xl shadow-4xl p-4 md:p-6">
-              <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
-                Ahrefs{" "}
-              </h4>
-              <p className="text-white-1100 font-normal text-xs leading-[140%]">
-                Das Linkprofil wird optimiert und Backlinks analysiert, die für
-                dein Wachstum entscheidend sind.
-              </p>
-              <Link
-                href={"/"}
-                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
-              >
-                <img src="/images/up-arw.svg" alt="" />
-              </Link>
-            </div>
-            <div className="card-hero-image-bottom  border border-solid border-orange-1100 rounded-2xl">
-              <img
-                src="/images/sistrix-img.jpg"
-                alt=""
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </div>
-            <div className="card-sistrix-text bg-black-1200 rounded-2xl shadow-4xl p-6">
-              <h4 className="text-white-1100 font-semibold xl:text-2xl md:text-xl text-base leading-[19px] md:leading-7 mb-2 xl:leading-[140%]">
-                SISTRIX{" "}
-              </h4>
-              <p className="text-white-1100 font-normal text-xs leading-[140%]">
-                Die Sichtbarkeit deiner Website wird überwacht, um Potenziale
-                zur Optimierung zu erkennen.
-              </p>
-              <Link
-                href={"/"}
-                className="flex items-center mt-2.25 justify-center ml-auto border border-solid border-white-1100 w-10 h-10 rounded-full"
-              >
-                <img src="/images/up-arw.svg" alt="" />
-              </Link>
-            </div>
-            <div className="card-sistrix-logo bg-white-1100 rounded-2xl shadow-5xl px-5 flex items-center justify-center">
-              <img
-                src="/images/sistrx-img.png"
-                className="h-[66px] md:h-auto object-cover"
+                className="h-[54px] md:h-auto object-cover"
                 alt=""
               />
             </div>
@@ -2522,7 +2544,7 @@ const page = () => {
               Mehrwert schaffen.
             </p>
           </div>
-          <div className="xl:mt-22 md:mt-16 mt-8 grid xl:grid-cols-2 md:gap-4 gap-8 xl:gap-8">
+          <div className="xl:mt-22 md:mt-16 mt-8 grid xl:grid-cols-2 md:gap-8 gap-8 xl:gap-8">
             <div className="">
               <div className='bg-[url("/images/galaxy-img4.jpg")] bg-cover bg-center px-8 pb-6 pt-5 rounded-2xl shadow-4xl'>
                 <div className="flex items-center justify-center">
@@ -2627,8 +2649,8 @@ const page = () => {
                 </div>
               </div>
             </div>
-            <div className="">
-              <div className="grid md:grid-cols-2 md:gap-4 gap-8 xl:gap-8 mb-8">
+            <div className="flex flex-col md:gap-6 gap-8">
+              <div className="grid md:grid-cols-2 lg:order-1 order-2 md:gap-4 gap-8 xl:gap-8 mb-8">
                 <div className="bg-white-1100 rounded-2xl shadow-4xl p-4">
                   <span className="flex items-center justify-center w-6 h-6 mb-2">
                     <svg
@@ -2702,7 +2724,7 @@ const page = () => {
                   </Link>
                 </div>
               </div>
-              <div className='bg-[url("/images/home-bg.png")] bg-cover bg-center px-8 pb-8 pt-26.5 rounded-2xl shadow-4xl'>
+              <div className='bg-[url("/images/home-bg.png")]  lg:order-2 order-1 bg-cover bg-center px-8 pb-8 pt-26.5 rounded-2xl shadow-4xl'>
                 <div className="flex items-center justify-end -mb-12">
                   <img src="/images/home-img.png" alt="" className="h-52.25" />
                 </div>
@@ -2766,7 +2788,9 @@ const page = () => {
               <h2 className="xl:text-5xl md:text-[29px] sm:max-w-full max-w-[238px] xl:leading-14.75 text-xl leading-6 md:leading-10 font-semibold text-white-1100 uppercase pb-5 md:pb-8 xl:pb-10">
                 Wir unterstützen Dich bei der SEO Optimierung deiner Website!
               </h2>
-              <CtaButton href="/" label="Jetzt Kennenlerngespräch buchen" />
+              <div className="inline-block sm:w-auto w-full" onClick={open5}>
+                <CtaButton href="" label="Jetzt Kennenlerngespräch buchen" />
+              </div>
               <p className="text-xs leading-4 text-white-1100 pt-3">
                 Kostenlos & unverbindlich – nur für kurze Zeit verfügbar.
               </p>
@@ -2973,125 +2997,125 @@ const page = () => {
           </div>
         </div>
       </Dialog>
-          {/**** Request a Quick Modal ****/}
-            <Dialog
-              open={isOpen5}
-              as="div"
-              className="relative z-70 focus:outline-none"
-              onClose={close5}
+      {/**** Request a Quick Modal ****/}
+      <Dialog
+        open={isOpen5}
+        as="div"
+        className="relative z-70 focus:outline-none"
+        onClose={close5}
+      >
+        <div className="fixed inset-0 z-10 bg-black/80 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <DialogPanel
+              transition
+              className="w-full max-w-360 relative md:pt-30 md:pb-16.75 py-22 md:px-10 px-4 bg-[url(/images/Modal-bg2.jpg)] bg-no-repeat bg-cover bg-center shadow-4xl rounded-2xl mx-auto backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
-              <div className="fixed inset-0 z-10 bg-black/80 w-screen overflow-y-auto">
-                <div className="flex min-h-full items-center justify-center p-4">
-                  <DialogPanel
-                    transition
-                    className="w-full max-w-360 relative md:pt-30 md:pb-16.75 py-22 md:px-10 px-4 bg-[url(/images/Modal-bg2.jpg)] bg-no-repeat bg-cover bg-center shadow-4xl rounded-2xl mx-auto backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
-                  >
-                    <div className="w-full max-w-249.25 mx-auto">
-                      <Button
-                        className="absolute md:top-18 md:right-18 top-4 right-4 cursor-pointer z-100 inline-flex items-center w-6 h-6"
-                        onClick={close5}
+              <div className="w-full max-w-249.25 mx-auto">
+                <div
+                  className="absolute md:top-18 md:right-18 top-4 right-4 cursor-pointer z-100 inline-flex items-center w-6 h-6"
+                  onClick={close5}
+                >
+                  <img src="/images/CloseButton.svg" alt="" />
+                </div>
+                <div className="text-center lg:pb-12 pb-10 lg:border-b-0 border-b border-solid border-white-1100">
+                  <h4 className="text-white-1100 md:text-2xl text-base md:leading-[140%] leading-[124%] font-semibold">
+                    Nur für kurze Zeit: Dein kostenloses Kennenlerngespräch
+                  </h4>
+                  <p className="text-white-1100 text-base mt-5 leading-[140%] font-normal">
+                    Nutze diese Chance für ein kostenloses, unverbindliches
+                    Kennenlerngespräch. Erhalte konkrete Antworten und erste
+                    Impulse für deine Strategie – sichere dir jetzt deinen
+                    Termin, solange noch Verfügbarkeit besteht.“
+                  </p>
+                </div>
+                <div className="lg:pt-0 pt-10">
+                  <div className="flex md:max-w-135 max-w-full xl:max-w-249.25 xl:flex-row flex-col w-full mx-auto bg-white-1100 rounded-2xl">
+                    <div className="bg-white-1100 md:rounded-tl-2xl rounded-t-2xl md:rounded-bl-2xl  xl:py-7.25 py-6 px-6 xl:mx-0 md:mx-auto mx-0 md:w-[42%]  xl:w-[36%] w-full">
+                      <Link
+                        href=""
+                        className="xl:mb-13.5 mb-9 md:mb-11.25 inline-flex"
                       >
-                        <img src="/images/CloseButton.svg" alt="" />
-                      </Button>
-                      <div className="text-center lg:pb-12 pb-10 lg:border-b-0 border-b border-solid border-white-1100">
-                        <h4 className="text-white-1100 md:text-2xl text-base md:leading-[140%] leading-[124%] font-semibold">
-                          Nur für kurze Zeit: Dein kostenloses Kennenlerngespräch
-                        </h4>
-                        <p className="text-white-1100 text-base mt-5 leading-[140%] font-normal">
-                          Nutze diese Chance für ein kostenloses, unverbindliches
-                          Kennenlerngespräch. Erhalte konkrete Antworten und erste
-                          Impulse für deine Strategie – sichere dir jetzt deinen
-                          Termin, solange noch Verfügbarkeit besteht.“
+                        <img
+                          src="images/benchmedia.svg"
+                          alt=""
+                          className="xl:h-auto h-3.25"
+                        />
+                      </Link>
+                      <h3 className="xl:text-xl font-extrabold md:text-[13px] md:leading-4 text-xl leading-6 xl:leading-6 text-orange-1100 uppercase">
+                        KENNENLERNGESPRÄCH
+                      </h3>
+                      <p className="xl:text-xs text-[8px] font-light leading-2.25 xl:leading-3.5 text-black-1200 -tracking-[0.12px] py-2 xl:py-3">
+                        30 Minuten - Google Meet
+                      </p>
+                      <h4 className="text-black-1200 text-[10px] xl:text-base font-bold leading-sm xl:leading-5.5 pb-3 md:pb-1">
+                        ONLINE MARKETING BERATUNG
+                      </h4>
+                      <p className="text-black-1200 xl:text-sm text-[9px] leading-3 font-semibold xl:leading-4.75">
+                        DU VERDIENST ES, ONLINE SICHTBAR ZU SEIN!
+                      </p>
+                      <div className="xl:pt-8 pt-4">
+                        <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px] pb-4">
+                          Im Kennenlerngespräch analysieren wir gemeinsam deine
+                          Online-Präsenz und besprechen, wie du deine
+                          Reichweite, Sichtbarkeit und den Erfolg steigern
+                          kannst.
+                        </p>
+                        <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px] pb-4">
+                          <span className="text-orange-1100">
+                            Wähle einfach deinen Wunschtermin im Kalender aus
+                          </span>{" "}
+                          und gib deine Kontaktdaten ein. Du erhältst im
+                          Anschluss eine E-Mail mit deinem persönlichen
+                          Meeting-Link.
+                        </p>
+                        <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px]">
+                          Wir freuen uns auf unser Treffen!
                         </p>
                       </div>
-                      <div className="lg:pt-0 pt-10">
-                        <div className="flex md:max-w-135 max-w-full xl:max-w-249.25 xl:flex-row flex-col w-full mx-auto bg-white-1100 rounded-2xl">
-                          <div className="bg-white-1100 md:rounded-tl-2xl rounded-t-2xl md:rounded-bl-2xl  xl:py-7.25 py-6 px-6 xl:mx-0 md:mx-auto mx-0 md:w-[42%]  xl:w-[36%] w-full">
-                            <Link
-                              href="/"
-                              className="xl:mb-13.5 mb-9 md:mb-11.25 inline-flex"
-                            >
-                              <img
-                                src="images/benchmedia.svg"
-                                alt=""
-                                className="xl:h-auto h-3.25"
-                              />
-                            </Link>
-                            <h3 className="xl:text-xl font-extrabold md:text-[13px] md:leading-4 text-xl leading-6 xl:leading-6 text-orange-1100 uppercase">
-                              KENNENLERNGESPRÄCH
-                            </h3>
-                            <p className="xl:text-xs text-[8px] font-light leading-2.25 xl:leading-3.5 text-black-1200 -tracking-[0.12px] py-2 xl:py-3">
-                              30 Minuten - Google Meet
-                            </p>
-                            <h4 className="text-black-1200 text-[10px] xl:text-base font-bold leading-sm xl:leading-5.5 pb-3 md:pb-1">
-                              ONLINE MARKETING BERATUNG
-                            </h4>
-                            <p className="text-black-1200 xl:text-sm text-[9px] leading-3 font-semibold xl:leading-4.75">
-                              DU VERDIENST ES, ONLINE SICHTBAR ZU SEIN!
-                            </p>
-                            <div className="xl:pt-8 pt-4">
-                              <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px] pb-4">
-                                Im Kennenlerngespräch analysieren wir gemeinsam deine
-                                Online-Präsenz und besprechen, wie du deine
-                                Reichweite, Sichtbarkeit und den Erfolg steigern
-                                kannst.
-                              </p>
-                              <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px] pb-4">
-                                <span className="text-orange-1100">
-                                  Wähle einfach deinen Wunschtermin im Kalender aus
-                                </span>{" "}
-                                und gib deine Kontaktdaten ein. Du erhältst im
-                                Anschluss eine E-Mail mit deinem persönlichen
-                                Meeting-Link.
-                              </p>
-                              <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px]">
-                                Wir freuen uns auf unser Treffen!
-                              </p>
-                            </div>
-                          </div>
-                          <div className="md:w-[64%] w-full xl:mx-0 md:mx-auto mx-0">
-                            <MeetingEmbed />
-                          </div>
-                        </div>
-                        <div className="w-full sm:mt-12 mt-10">
-                          <div className="w-full text-right">
-                            <p className="font-bold md:text-base text-sm leading-[140%] text-white/50">
-                              Oder möchtest du eine Kurzanalyse deiner Webseite per
-                              E-Mail erhalten?
-                            </p>
-                            <p className="font-normal text-xs mt-3 leading-[140%] text-white/50">
-                              Kein Problem – gib einfach deine URL an und wir schicken
-                              dir die wichtigsten Punkte.
-                            </p>
-                          </div>
-                          <div className="flex sm:flex-row flex-col gap-2 justify-end items-center sm:mt-10 mt-6">
-                            <input
-                              type="email"
-                              placeholder="E-Mail"
-                              value={emailInput}
-                              onChange={(e) => setEmailInput(e.target.value)}
-                              className="bg-black-1100 border border-grey-1100/20 rounded-lg h-12.25 px-6  text-white/50 text-xs font-normal sm:w-50 w-full focus:outline-none focus:border-grey-1100"
-                            />
-                            <div className="overflow-hidden flex-1 relative sm:w-114 w-full">
-                              <input
-                                type="url"
-                                placeholder="Deine URL"
-                                value={urlInput}
-                                onChange={(e) => setUrlInput(e.target.value)}
-                                className="bg-black-1100 border border-grey-1100/20 rounded-lg h-12.25 px-6  text-white/50 text-xs font-normal focus:outline-none w-full focus:border-grey-1100"
-                              />
-                              <button className="absolute top-0 right-0 bg-orange-1100 w-26 h-12.25 cursor-pointer text-white-1100 text-xs font-normal rounded-br-lg rounded-tr-lg hover:brightness-110 transition-all whitespace-nowrap">
-                                Schicken
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                    </div>
+                    <div className="md:w-[64%] w-full xl:mx-0 md:mx-auto mx-0">
+                      <MeetingEmbed />
+                    </div>
+                  </div>
+                  <div className="w-full sm:mt-12 mt-10">
+                    <div className="w-full text-right">
+                      <p className="font-bold md:text-base text-sm leading-[140%] text-white/50">
+                        Oder möchtest du eine Kurzanalyse deiner Webseite per
+                        E-Mail erhalten?
+                      </p>
+                      <p className="font-normal text-xs mt-3 leading-[140%] text-white/50">
+                        Kein Problem – gib einfach deine URL an und wir schicken
+                        dir die wichtigsten Punkte.
+                      </p>
+                    </div>
+                    <div className="flex sm:flex-row flex-col gap-2 justify-end items-center sm:mt-10 mt-6">
+                      <input
+                        type="email"
+                        placeholder="E-Mail"
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        className="bg-black-1100 border border-grey-1100/20 rounded-lg h-12.25 px-6  text-white/50 text-xs font-normal sm:w-50 w-full focus:outline-none focus:border-grey-1100"
+                      />
+                      <div className="overflow-hidden flex-1 relative sm:w-114 w-full">
+                        <input
+                          type="url"
+                          placeholder="Deine URL"
+                          value={urlInput}
+                          onChange={(e) => setUrlInput(e.target.value)}
+                          className="bg-black-1100 border border-grey-1100/20 rounded-lg h-12.25 px-6  text-white/50 text-xs font-normal focus:outline-none w-full focus:border-grey-1100"
+                        />
+                        <button className="absolute top-0 right-0 bg-orange-1100 w-26 h-12.25 cursor-pointer text-white-1100 text-xs font-normal rounded-br-lg rounded-tr-lg hover:brightness-110 transition-all whitespace-nowrap">
+                          Schicken
+                        </button>
                       </div>
                     </div>
-                  </DialogPanel>
+                  </div>
                 </div>
               </div>
-            </Dialog>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 };

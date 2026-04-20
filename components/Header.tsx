@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const LEISTUNGEN_LINKS = [
-  { label: "Suchmaschinenoptimierung", href: "/" },
+  { label: "Suchmaschinenoptimierung", href: "/seoAgentur" },
   { label: "Google Ads", href: "/" },
   { label: "UI/UX Webdesign", href: "/" },
   { label: "Social Media", href: "/" },
@@ -24,7 +24,7 @@ const LEISTUNGEN_LINKS = [
 ];
 
 const REGIONAL_LINKS = [
-  { label: "Suchmaschinenoptimierung", href: "/" },
+  { label: "Suchmaschinenoptimierung", href: "/RegionalSeo" },
   { label: "Google Ads", href: "/" },
   { label: "UI/UX Webdesign", href: "/" },
   { label: "Social Media", href: "/" },
@@ -35,7 +35,7 @@ const REGIONAL_LINKS = [
 ];
 
 const LEISTUNGEN_LINKS_MBL = [
-  { label: "Suchmaschinenoptimierung", href: "/" },
+  { label: "Suchmaschinenoptimierung", href: "/seoAgentur" },
   { label: "Google Ads", href: "/" },
   { label: "UI/UX Webdesign", href: "/" },
   { label: "Social Media", href: "/" },
@@ -51,34 +51,47 @@ const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [regionalOpen, setRegionalOpen] = useState(true);
   const [leistungenOpen, setLeistungenOpen] = useState(true);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
 
-useEffect(() => {
-  if (drawerOpen) {
-    // Only apply padding compensation on desktop with visible scrollbar
-    const hasScrollbar = window.innerWidth > document.documentElement.clientWidth;
-    const isDesktop = window.innerWidth >= 1024; // lg breakpoint
-    
-    if (hasScrollbar && isDesktop) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
+  useEffect(() => {
+    if (drawerOpen) {
+      // Only apply padding compensation on desktop with visible scrollbar
+      const hasScrollbar = window.innerWidth > document.documentElement.clientWidth;
+      const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+      
+      if (hasScrollbar && isDesktop) {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.paddingRight = "";
+      document.body.style.overflow = "";
     }
-    
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.paddingRight = "";
-    document.body.style.overflow = "";
-  }
 
-  return () => {
-    document.body.style.paddingRight = "";
-    document.body.style.overflow = "";
-  };
-}, [drawerOpen]);
+    return () => {
+      document.body.style.paddingRight = "";
+      document.body.style.overflow = "";
+    };
+  }, [drawerOpen]);
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleCard = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index));
   };
+
+  // Function to close drawer when link is clicked
+  const handleLinkClick = () => {
+    setDrawerOpen(false);
+  };
+
+  // Function to close desktop dropdown when link is clicked
+  const handleDesktopLinkClick = () => {
+    setDesktopDropdownOpen(false);
+  };
+
   {
     /*******/
   }
@@ -201,13 +214,13 @@ useEffect(() => {
           <nav>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-5 xl:gap-23.75">
-                <Link href="/">
+                <Link href="/" onClick={handleLinkClick}>
                   <img src="images/brand.svg" alt="Benchmark Media Solution" />
                 </Link>
 
                 <ol className="hidden xl:flex items-center m-auto gap-8">
                   <li>
-                    <DropdownMenu>
+                    <DropdownMenu open={desktopDropdownOpen} onOpenChange={setDesktopDropdownOpen}>
                       <DropdownMenuTrigger asChild>
                         <Button className="text-base hover:text-orange-1100 ring-0 focus-visible:ring-0 font-normal cursor-pointer text-white-1100 px-0 bg-transparent shadow-none gap-1">
                           Leistungen
@@ -229,6 +242,7 @@ useEffect(() => {
                           >
                             <Link
                               href={href}
+                              onClick={handleDesktopLinkClick}
                               className="hover:text-orange-1100"
                             >
                               {label}
@@ -381,6 +395,7 @@ useEffect(() => {
                   <li key={label}>
                     <Link
                       href={href}
+                      onClick={handleLinkClick}
                       className="text-base font-normal text-white-1100 leading-5.5 whitespace-nowrap hover:text-orange-1100 transition-colors"
                     >
                       {label}
@@ -394,6 +409,7 @@ useEffect(() => {
               <li>
                 <Link
                   href="/"
+                  onClick={handleLinkClick}
                   className="text-base font-normal text-white-1100 hover:text-orange-1100"
                 >
                   Über uns
@@ -402,6 +418,7 @@ useEffect(() => {
               <li>
                 <Link
                   href="/"
+                  onClick={handleLinkClick}
                   className="text-base font-normal text-white-1100 hover:text-orange-1100"
                 >
                   Experience
@@ -410,6 +427,7 @@ useEffect(() => {
               <li>
                 <Link
                   href="/"
+                  onClick={handleLinkClick}
                   className="text-base font-normal text-white-1100 hover:text-orange-1100"
                 >
                   Branchen
@@ -452,6 +470,7 @@ useEffect(() => {
                 <li key={label}>
                   <Link
                     href={href}
+                    onClick={handleLinkClick}
                     className="text-base font-normal text-white-1100 leading-5.5 whitespace-nowrap hover:text-orange-1100 transition-colors"
                   >
                     {label}
@@ -464,6 +483,7 @@ useEffect(() => {
 
         <Link
           href="/"
+          onClick={handleLinkClick}
           className="text-base font-normal text-white-1100 leading-5.5 hover:text-orange-1100 transition-colors"
         >
           Blog
@@ -471,6 +491,7 @@ useEffect(() => {
 
         <Link
           href="/"
+          onClick={handleLinkClick}
           className="text-base font-normal text-white-1100 leading-5.5 hover:text-orange-1100 transition-colors"
         >
           Branchen
@@ -478,6 +499,7 @@ useEffect(() => {
 
         <Link
           href="/"
+          onClick={handleLinkClick}
           className="text-base font-normal text-white-1100 leading-5.5 hover:text-orange-1100 transition-colors"
         >
           Partnerprogramm
@@ -517,7 +539,7 @@ useEffect(() => {
                       Nutze diese Chance für ein kostenloses, unverbindliches
                       Kennenlerngespräch. Erhalte konkrete Antworten und erste
                       Impulse für deine Strategie – sichere dir jetzt deinen
-                      Termin, solange noch Verfügbarkeit besteht.“
+                      Termin, solange noch Verfügbarkeit besteht."
                     </p>
                   </div>
                   <div className="lg:pt-0 pt-10">

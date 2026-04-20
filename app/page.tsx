@@ -266,9 +266,9 @@ const page = () => {
             </div>
             <div className=" relative md:max-w-[380px] xl:max-w-[704px] max-w-full ml-auto">
               <PartnerLogosMarquee />
-              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] absolute top-0 left-0 w-10 md:w-40 h-full"></span>
-              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] sm:hidden block absolute top-0 right-0 w-10 md:w-40 h-full rotate-180"></span>
-            </div>
+               <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] z-[10] absolute top-0 left-[-5px] w-10 md:w-40 h-full"></span>
+              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] z-[10] lg:hidden block absolute top-0 right-[-8px] w-10 md:w-40 h-full rotate-180"></span>
+           </div>
           </div>
         </div>
       </section>

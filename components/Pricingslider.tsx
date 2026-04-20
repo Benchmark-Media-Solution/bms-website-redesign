@@ -166,98 +166,104 @@ const ARTICLES: Article[] = [
 ];
 
 function ArticleCard({ article }: { article: Article }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="testim-box group bg-[url('/images/galaxy-img3.png')] bg-cover bg-bottom overflow-hidden md:py-8 md:px-6 py-6 px-4 xl:p-8 rounded-2xl h-full border border-solid border-white-1100">
-     <div className="bg-white absolute left-0 top-0 w-full h-full z-10 opacity-0 box transition-all ease-in-out duration-500 rounded-2xl"></div>
-      <div className="relative z-20">
-      <div className="text-center">
-        <p className="text-white-1100 xl:font-normal text-[10px] leading-sm mb-6 xl:text-xs xl:leading-[140%]">
-          {article.category}
-        </p>
-        <h3 className="text-white-1100 font-bold xl:text-[22px] md:text-sm md:leading-4.75 text-xl leading-6 md:tarcking-normal -tracking-[0.4px] xl:leading-[140%]">
-          {article.heading}
-        </h3>
-      </div>
-<div className="flex flex-col xl:gap-4 md:gap-0 gap-4 w-full mt-6 mb-12 xl:min-h-68.75 min-h-55 relative">
-  <div className="hid-box absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-500 ease-in-out">
-    <ul className="mb-6 md:min-h-33 xl:min-h-41.75">
-      <li className="flex items-center gap-4 mb-2">
-        <span className="flex items-center justify-center w-6 h-6">
-          <img
-            src={article.img}
-            alt={article.heading}
-            className="transition-all duration-300"
-          />
-        </span>
-        <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
-          {article.dic}
-        </span>
-      </li>
-      <li className="flex items-center gap-4 mb-2">
-        <span className="flex items-center justify-center w-6 h-6">
-          <img
-            src={article.img}
-            alt={article.dic2}
-            className="transition-all duration-300"
-          />
-        </span>
-        <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
-          {article.dic2}
-        </span>
-      </li>
-      <li className="flex items-center gap-4 mb-2">
-        <span className="flex items-center justify-center w-6 h-6">
-          <img
-            src={article.img}
-            alt={article.dic3}
-            className="transition-all duration-300"
-          />
-        </span>
-        <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
-          {article.dic3}
-        </span>
-      </li>
-      <li className="flex items-center gap-4">
-        <span className="flex items-center justify-center w-6 h-6">
-          <img
-            src={article.img}
-            alt={article.dic4}
-            className="transition-all duration-300"
-          />
-        </span>
-        <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
-          {article.dic4}
-        </span>
-      </li>
-    </ul>
-    <p className="xl:font-normal font-light text-[10px] leading-sm xl:text-xs xl:leading-[140%] text-white-1100 min-h-auto xl:min-h-17">
-      {article.excerpt}
-    </p>
-  </div>
-  
-  <div className="block-box absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none group-hover:pointer-events-auto">
-    <p className="text-white-1100 font-normal text-xs leading-[140%] mb-3">
-      {article.paragr}
-    </p>
-    <p className="text-white-1100 font-normal text-xs leading-[140%] mb-3">
-      {article.paragr2}
-    </p>
-    <p className="text-white-1100 font-normal text-xs leading-[140%] mb-3">
-      {article.paragr3}
-    </p>
-    <p className="text-white-1100 font-normal text-xs leading-[140%]">
-      {article.paragr4}
-    </p>
-  </div>
-</div>
-      <Link
-        href={"#"}
-        className="learn-more flex items-center justify-center hover:bg-orange-1100  text-white-1100 text-base leading-[150%] font-normal border border-solid border-orange-1100 rounded h-12 w-full"
+   <div
+  className="testim-box group bg-[url('/images/galaxy-img3.png')] bg-cover bg-bottom overflow-hidden md:py-8 md:px-6 py-6 px-4 xl:p-8 rounded-2xl h-full border border-solid border-white-1100"
+  onClick={() => setIsOpen(!isOpen)}
+>
+  <div className="bg-white border border-orange-1100 absolute left-0 top-0 w-full h-full z-10 opacity-0 box transition-all ease-in-out duration-500 rounded-2xl"></div>
+
+  <div className="relative z-20">
+    <div className="text-center">
+      <p className="text-white-1100 xl:font-normal text-[10px] leading-sm mb-6 xl:text-xs xl:leading-[140%]">
+        {article.category}
+      </p>
+      <h3 className="text-white-1100 font-bold xl:text-[22px] md:text-sm md:leading-4.75 text-xl leading-6 md:tarcking-normal -tracking-[0.4px] xl:leading-[140%]">
+        {article.heading}
+      </h3>
+    </div>
+
+    <div className="flex flex-col xl:gap-4 md:gap-0 gap-4 w-full mt-6 mb-12 xl:min-h-68.75 min-h-55 relative">
+      
+      <div
+        className={`hid-box absolute inset-0 transition-opacity duration-500 ease-in-out
+        ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}
+        md:opacity-100 md:group-hover:opacity-0`}
       >
-        {article.action}
-      </Link>
+        <ul className="mb-6 md:min-h-33 xl:min-h-41.75">
+          <li className="flex items-center gap-4 mb-2">
+            <span className="flex items-center justify-center w-6 h-6">
+              <img src={article.img} alt={article.heading} className="transition-all duration-300" />
+            </span>
+            <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
+              {article.dic}
+            </span>
+          </li>
+
+          <li className="flex items-center gap-4 mb-2">
+            <span className="flex items-center justify-center w-6 h-6">
+              <img src={article.img} alt={article.dic2} className="transition-all duration-300" />
+            </span>
+            <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
+              {article.dic2}
+            </span>
+          </li>
+
+          <li className="flex items-center gap-4 mb-2">
+            <span className="flex items-center justify-center w-6 h-6">
+              <img src={article.img} alt={article.dic3} className="transition-all duration-300" />
+            </span>
+            <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
+              {article.dic3}
+            </span>
+          </li>
+
+          <li className="flex items-center gap-4">
+            <span className="flex items-center justify-center w-6 h-6">
+              <img src={article.img} alt={article.dic4} className="transition-all duration-300" />
+            </span>
+            <span className="text-white-1100 xl:font-normal xl:text-sm text-[10px] leading-sm font-light xl:leading-[140%] block flex-1 transition-colors duration-300">
+              {article.dic4}
+            </span>
+          </li>
+        </ul>
+
+        <p className="xl:font-normal font-light text-[10px] leading-sm xl:text-xs xl:leading-[140%] text-white-1100 min-h-auto xl:min-h-17">
+          {article.excerpt}
+        </p>
+      </div>
+
+      <div
+        className={`block-box absolute inset-0 transition-opacity duration-500 ease-in-out
+        ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+        md:opacity-0 md:group-hover:opacity-100 md:group-hover:pointer-events-auto`}
+      >
+        <p className="text-white-1100 font-normal text-xs leading-[140%] mb-3">
+          {article.paragr}
+        </p>
+        <p className="text-white-1100 font-normal text-xs leading-[140%] mb-3">
+          {article.paragr2}
+        </p>
+        <p className="text-white-1100 font-normal text-xs leading-[140%] mb-3">
+          {article.paragr3}
+        </p>
+        <p className="text-white-1100 font-normal text-xs leading-[140%]">
+          {article.paragr4}
+        </p>
       </div>
     </div>
+
+    <Link
+      href={"#"}
+      onClick={(e) => e.stopPropagation()}
+      className="learn-more flex items-center justify-center hover:bg-orange-1100 text-white-1100 text-base leading-[150%] font-normal border border-solid border-orange-1100 rounded h-12 w-full"
+    >
+      {article.action}
+    </Link>
+  </div>
+</div>
   );
 }
 
@@ -285,7 +291,11 @@ export default function Pricingslider({
       breakpoints: {
         320: {
           slidesPerView: 1,
-          spaceBetween: 24,
+          spaceBetween: 16,
+          grid: {
+            rows: 12,
+            fill: "row",
+          },
         },
         768: {
           slidesPerView: 2,
@@ -321,24 +331,6 @@ export default function Pricingslider({
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-2 md:gap-7.5 mt-8 md:hidden">
-        {ARTICLES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => swiperInstanceRef.current?.slideToLoop(i)}
-            className="relative h-0.5 w-8 cursor-pointer rounded-full overflow-hidden transition-all duration-300"
-          >
-            <div
-              className="absolute inset-0 rounded-full transition-opacity duration-500"
-              style={{
-                backgroundImage:
-                  "linear-gradient(-90deg, #89520e 0%, #ef8f19 54%, #89520e 100%)",
-                opacity: activeIndex === i ? 1 : 0,
-              }}
-            />
-          </button>
-        ))}
-      </div>
     </div>
   );
 }

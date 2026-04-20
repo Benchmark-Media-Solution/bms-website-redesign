@@ -14,6 +14,8 @@ export default function ContactForm() {
   });
 
   const [open, setOpen] = useState(false);
+  const [height, setHeight] = useState(0);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options = [
@@ -35,110 +37,146 @@ export default function ContactForm() {
         setOpen(false);
       }
     };
+
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  // Height animation
+  useEffect(() => {
+    if (dropdownRef.current) {
+      setHeight(open ? dropdownRef.current.scrollHeight : 0);
+    }
+  }, [open]);
+
   return (
     <div className="">
-
-      {/* Form */}
       <form>
         <div className="mb-6" ref={dropdownRef}>
-          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">Entdecke dein Potenzial – lass uns deine Website optimieren und sichtbarer machen!</label>
+          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+            Entdecke dein Potenzial – lass uns deine Website optimieren und
+            sichtbarer machen!
+          </label>
+
           <div className="relative">
-            <div onClick={() => setOpen(!open)}
+            {/* Input */}
+            <div
+              onClick={() => setOpen(!open)}
               className="input-style flex justify-between h-[46px] items-center cursor-pointer rounded-sm border border-solid border-white/50 bg-black-1200/40 px-4 py-3"
             >
-              <span className="text-white-1100 font-normal text-base leading-[140%] flex items-center">{form.service}</span>
+              <span className="text-white-1100 font-normal text-base leading-[140%] flex items-center">
+                {form.service}
+              </span>
 
               <span
-                className={`flex items-center justify-center w-8 h-8 transition-transform duration-300 ${open ? "rotate-90" : ""
-                  }`}
+                className={`flex items-center justify-center w-8 h-8 transition-transform duration-300 ${
+                  open ? "rotate-90" : ""
+                }`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="17" viewBox="0 0 10 17" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M9.428 9.428L1.88533 16.9707L0 15.0853L6.6 8.48533L0 1.88533L1.88533 0L9.428 7.54267C9.67796 7.7927 9.81838 8.13178 9.81838 8.48533C9.81838 8.83888 9.67796 9.17796 9.428 9.428Z" fill="#FDFDFD" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="17"
+                  viewBox="0 0 10 17"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M9.428 9.428L1.88533 16.9707L0 15.0853L6.6 8.48533L0 1.88533L1.88533 0L9.428 7.54267C9.67796 7.7927 9.81838 8.13178 9.81838 8.48533C9.81838 8.83888 9.67796 9.17796 9.428 9.428Z"
+                    fill="#FDFDFD"
+                  />
                 </svg>
               </span>
             </div>
 
-            {/* Dropdown List */}
-            {open && (
-              <div className="absolute top-14 left-0 mt-2 w-full border border-white/50 rounded-sm bg-black-1100 shadow-5xl py-4 px-2 overflow-hidden">
-                {options.map((item, index) => (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      setForm({ ...form, service: item });
-                      setOpen(false);
-                    }}
-                    className="p-2 text-white/50 hover:text-white-1100 focus:text-orange3 active:text-orange3 font-normal text-base leading-[140%] flex items-center cursor-pointer transition mb-2 last-of-type:mb-0"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            )}
+            {/* Dropdown */}
+            <div
+              ref={dropdownRef}
+           style={{ maxHeight: open ? "400px" : "0px" }}
+              className={`absolute top-14 left-0 mt-2 w-full border border-white/50 rounded-sm bg-black-1100 shadow-5xl px-2 overflow-hidden transition-all duration-500 ease-in-out ${
+                open ? "py-4 opacity-100" : "py-0 opacity-0"
+              }`}
+            >
+              {options.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setForm({ ...form, service: item });
+                    setOpen(false);
+                  }}
+                  className="p-2 text-white/50 hover:text-white-1100 font-normal text-base leading-[140%] flex items-center cursor-pointer transition mb-2 last-of-type:mb-0"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">Name</label>
+            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+              Name
+            </label>
             <input
               type="text"
               name="name"
-              placeholder=""
               value={form.name}
               onChange={handleChange}
-              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100"
             />
           </div>
 
           <div>
-            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">Unternehmensname</label>
+            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+              Unternehmensname
+            </label>
             <input
               type="text"
               name="company"
-              placeholder=""
               value={form.company}
               onChange={handleChange}
-              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100"
             />
           </div>
 
           <div>
-            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">Telefonnummer</label>
+            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+              Telefonnummer
+            </label>
             <input
               type="text"
               name="phone"
-              placeholder=""
               value={form.phone}
               onChange={handleChange}
-              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100"
             />
           </div>
 
           <div>
-            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">E-Mail Adresse</label>
+            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+              E-Mail Adresse
+            </label>
             <input
               type="email"
               name="email"
-              placeholder=""
               value={form.email}
               onChange={handleChange}
-              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100"
             />
           </div>
 
           <div>
-            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">Website-URL</label>
+            <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+              Website-URL
+            </label>
             <input
               type="text"
               name="website"
-              placeholder=""
               value={form.website}
               onChange={handleChange}
-              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100"
             />
           </div>
 
@@ -149,15 +187,15 @@ export default function ContactForm() {
             <input
               type="text"
               name="questions"
-              placeholder=""
               value={form.questions}
               onChange={handleChange}
-              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+              className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100"
             />
           </div>
         </div>
+
         <div className="mt-8 text-center">
-          <button className="bg-orange-1100 hover:bg-white-1100 text-white-1100 cursor-pointer transition px-5 h-11.5 lg:w-auto w-full rounded-sm font-normal sm:text-base text-sm sm:leading-[140%] leading-[124%]">
+          <button className="bg-orange-1100 hover:bg-white-1100 text-white-1100 cursor-pointer transition px-5 h-11.5 lg:w-auto w-full rounded-sm font-normal sm:text-base text-sm">
             Jetzt anfragen
           </button>
         </div>

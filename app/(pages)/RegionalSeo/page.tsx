@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import CtaButton from "@/components/Ctabutton";
 import Link from "next/link";
 import ContactForm from "@/components/ui/ContactForm";
@@ -11,8 +12,80 @@ import { HamburgFaq } from "@/components/HamburgFaq";
 import Agencycards from "@/components/Agencycards";
 import { RegionalFaq } from "@/components/RegionalFaq";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-
+import { useEffect, useRef, useState } from "react";
 const page = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const [form, setForm] = useState({
+      service: "Ein individuelles Angebot",
+      name: "",
+      company: "",
+      phone: "",
+      email: "",
+      website: "",
+      questions: "",
+    });
+    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen2, setIsOpen2] = useState(false);
+  
+    const handleChange = (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+  
+    const open = () => {
+      setIsOpen(true);
+    };
+  
+    const close = () => {
+      setIsOpen(false);
+    };
+  
+    const open2 = () => {
+      setIsOpen(false);
+      setIsOpen2(true);
+    };
+  
+    const close2 = () => {
+      setIsOpen2(false);
+    };
+  
+    const [urlInput, setUrlInput] = useState("");
+    const [emailInput, setEmailInput] = useState("");
+    let [isOpen5, setIsOpen5] = useState(false);
+  
+    function open5() {
+      setIsOpen5(true);
+    }
+    function close5() {
+      setIsOpen5(false);
+    }
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        {
+          threshold: 0.3,
+          rootMargin: '0px'
+        }
+      );
+  
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+  
+      return () => {
+        if (sectionRef.current) {
+          observer.unobserve(sectionRef.current);
+        }
+      };
+    }, []);
+  
+
   return (
     <>
       <section className='md:bg-[url("/images/Regional-seo-hero-bg.png")] bg-[url("/images/Regional-seo-hero-small.png")] bg-cover bg-center relative lg:pb-0 md:pb-12 pb-17 md:pt-40 pt-43'>
@@ -59,13 +132,13 @@ const page = () => {
             </div>
             <div className=" relative md:max-w-[380px] xl:max-w-[704px] max-w-full ml-auto">
               <PartnerLogosMarquee />
-              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] absolute top-0 left-0 w-10 md:w-40 h-full"></span>
-              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] sm:hidden block absolute top-0 right-0 w-10 md:w-40 h-full rotate-180"></span>
+              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] z-[10] absolute top-0 left-[-5px] w-10 md:w-40 h-full"></span>
+              <span className="bg-[linear-gradient(90deg,#060606_0.08%,rgba(6,6,6,0)_99.92%)] z-[10] lg:hidden block absolute top-0 right-[-8px] w-10 md:w-40 h-full rotate-180"></span>
             </div>
           </div>
         </div>
       </section>
-      <section className="bg-[url('/images/MediaSolution-bg.jpg')] bg-cover bg-top relative lg:pt-48 lg:pb-66.25 md:py-33.75 pt-0 pb-20">
+      <section className="md:bg-[url('/images/MediaSolution-bg.jpg')] bg-[url(/images/MediaSolution-bg-m.png)] bg-cover bg-top relative lg:pt-48 lg:pb-66.25 md:py-33.75 pt-0 pb-20">
         <div className="max-w-338 w-full mx-auto md:px-10 px-4 xl:px-4">
           <div className="max-w-247.75 w-full mx-auto">
             <div className="border-b border-solid border-white-1100/40 relative">
@@ -105,15 +178,15 @@ const page = () => {
               <ul className="flex lg:flex-row flex-col lg:max-w-full max-w-87.5 w-full lg:mx-0 mx-auto items-center justify-center lg:gap-8 gap-4 lg:mt-12 mt-8">
                 <li className="lg:w-auto w-full">
                   <CtaButton
-                    href="/"
-                    className="md:w-auto! w-full! p-0!"
+                    href=""
+                    className="md:w-auto! w-full!"
                     label="Jetzt Kennenlerngespräch buchen"
                   />
                 </li>
                 <li className="lg:w-auto w-full">
                   <CtaButton
                     className="lg:w-auto! w-full!"
-                    href="/"
+                    href=""
                     label="Website-Analyse anfordern"
                     variant="transparent"
                   />
@@ -148,7 +221,7 @@ const page = () => {
                 <h4 className="text-orange-1100 lg:text-[70px] text-[50px] leading-[124%] mb-2 font-semibold">
                   +83%
                 </h4>
-                <p className="text-grey-1100 lg:text-base text-sm md:leading-[140%] leading-[124%] font-bold">
+                <p className="text-grey-1100 lg:text-base text-sm md:leading-[140%] leading-[124%] font-bold lg:min-h-auto md:min-h-[40px]">
                   Mehr qualifizierte Anfragen{" "}
                 </p>
                 <span className="bg-gradient w-full h-px block lg:my-6 my-4"></span>
@@ -160,7 +233,7 @@ const page = () => {
                 <h4 className="text-orange-1100 lg:text-[70px] text-[50px] leading-[124%] mb-2 font-semibold">
                   +43%
                 </h4>
-                <p className="text-grey-1100 lg:text-base text-sm md:leading-[140%] leading-[124%] font-bold">
+                <p className="text-grey-1100 lg:text-base text-sm md:leading-[140%] leading-[124%] font-bold lg:min-h-auto md:min-h-[40px]">
                   Neukundengewinn
                 </p>
                 <span className="bg-gradient w-full h-px block lg:my-6 my-4"></span>
@@ -172,7 +245,7 @@ const page = () => {
                 <h4 className="text-orange-1100 lg:text-[70px] text-[50px] leading-[124%] mb-2 font-semibold">
                   +67%
                 </h4>
-                <p className="text-grey-1100 lg:text-base text-sm md:leading-[140%] leading-[124%] font-bold">
+                <p className="text-grey-1100 lg:text-base text-sm md:leading-[140%] leading-[124%] font-bold lg:min-h-auto md:min-h-[40px]">
                   Umsatzsteigerung{" "}
                 </p>
                 <span className="bg-gradient w-full h-px block lg:my-6 my-4"></span>
@@ -183,15 +256,17 @@ const page = () => {
             </div>
           </div>
           <div className="text-center lg:mt-22 mt-12">
-            <CtaButton
-              href="/"
-              className="md:w-auto! w-full!"
-              label="Erfolgsstories ansehen"
-            />
+            <div className="inline-block sm:w-auto w-full" onClick={open5}>
+              <CtaButton
+                href=""
+                className="md:w-auto! w-full!"
+                label="Erfolgsstories ansehen"
+              />
+            </div>
           </div>
         </div>
       </section>
-      <section className="lg:bg-[url('/images/Hamburg-bg.png')] md:bg-[url('/images/Hamburg-bg2.png')] bg-[url('/images/Hamburg-bg-mobile.png')] bg-cover bg-top md:pt-0 pt-8 xl:pb-55 pb-0 relative">
+      <section className="lg:bg-[url('/images/Hamburg-bg.png')] md:bg-[url('/images/Hamburg-bg2.png')] bg-[url('/images/Hamburg-bg-mobile.png')] bg-cover bg-top md:pt-0 pt-8 xl:pb-55 pb-0 relative z-10">
         <div className="max-w-338 w-full mx-auto md:px-10 px-4 xl:px-4">
           <div className="border-b border-solid border-white-1100/40 relative">
             <h2 className="xl:text-5xl md:text-[32px] text-xl leading-[140%] font-bold pb-8 md:pb-10 w-full text-white-1100 text-center">
@@ -293,9 +368,13 @@ const page = () => {
               </li>
             </ul>
           </div>
+          <div className="absolute right-4 spaceman-float -bottom-10 -z-10 md:hidden block">
+            <img src="/images/spaceman-mobile.png" alt="" />
+          </div>
+          <div className="bg-white-1100/40 w-[258px] h-[69px] md:hidden blur-[50px] mx-auto absolute left-0 right-0 top-10"></div>
         </div>
       </section>
-      <section className="py-50 ">
+      <section className="md:py-50 py-[88px]">
         <div className="max-w-310 px-5 mx-auto w-full">
           <h2 className="border-b border-solid border-white-1100/40 xl:text-5xl md:text-[32px] text-xl leading-[140%] font-bold pb-8 md:pb-10 max-w-294.5 mx-auto w-full text-white-1100 text-center">
             Umfassende SEO Services deiner <br />
@@ -325,7 +404,7 @@ const page = () => {
           <div className="flex md:max-w-135 max-w-full xl:max-w-249.25 xl:flex-row flex-col w-full mx-auto bg-white-1100 rounded-2xl ">
             <div className="bg-white-1100 md:rounded-tl-2xl rounded-t-2xl md:rounded-bl-2xl  xl:py-7.25 py-6 px-6 xl:mx-0 md:mx-auto mx-0 md:w-[42%]  xl:w-[36%] w-full">
               <Link
-                href="/"
+                href=""
                 className="xl:mb-13.5 mb-9 md:mb-11.25 inline-flex"
               >
                 <img
@@ -394,7 +473,7 @@ const page = () => {
               <li className="md:w-auto w-full">
                 <CtaButton
                   className="md:w-auto! w-full!"
-                  href="/"
+                  href=""
                   label="Jetzt Kennenlerngespräch buchen"
                   variant="transparent"
                 />
@@ -454,7 +533,12 @@ const page = () => {
               <img
                 src="/images/DeineSEO-img1.webp"
                 alt=""
-                className="w-full lg:h-full h-75 object-cover object-center rounded-2xl"
+                className="w-full lg:h-full lg:block hidden h-75 object-cover object-center rounded-2xl"
+              />
+              <img
+                src="/images/tab-img1.png"
+                alt=""
+                className="w-full lg:h-full block lg:hidden h-75 object-cover object-center rounded-2xl"
               />
             </div>
           </div>
@@ -504,7 +588,12 @@ const page = () => {
               <img
                 src="/images/DeineSEO-img2.webp"
                 alt=""
-                className="w-full lg:h-full h-75 object-cover object-center rounded-2xl"
+                className="w-full lg:h-full h-75 lg:block hidden  object-cover object-center rounded-2xl"
+              />
+              <img
+                src="/images/tab-img2.png"
+                alt=""
+                className="w-full lg:h-full block lg:hidden h-75 object-cover object-center rounded-2xl"
               />
             </div>
           </div>
@@ -554,7 +643,12 @@ const page = () => {
               <img
                 src="/images/DeineSEO-img3.webp"
                 alt=""
-                className="w-full lg:h-full h-75 object-cover object-center rounded-2xl"
+                className="w-full lg:h-full lg:block hidden  h-75 object-cover object-center rounded-2xl"
+              />
+              <img
+                src="/images/tab-img3.png"
+                alt=""
+                className="w-full lg:h-full block lg:hidden h-75 object-cover object-center rounded-2xl"
               />
             </div>
           </div>
@@ -647,7 +741,12 @@ const page = () => {
               <img
                 src="/images/DeineSEO-img4.webp"
                 alt=""
-                className="w-full lg:h-full h-75 object-cover object-center rounded-2xl"
+                className="w-full lg:h-full h-75 lg:block hidden  object-cover object-center rounded-2xl"
+              />
+              <img
+                src="/images/tab-img4.png"
+                alt=""
+                className="w-full lg:h-full block lg:hidden h-75 object-cover object-center rounded-2xl"
               />
             </div>
           </div>
@@ -697,7 +796,12 @@ const page = () => {
               <img
                 src="/images/DeineSEO-img5.webp"
                 alt=""
-                className="w-full lg:h-full h-75 object-cover object-center rounded-2xl"
+                className="w-full lg:h-full h-75 lg:block hidden  object-cover object-center rounded-2xl"
+              />
+              <img
+                src="/images/tab-img5.png"
+                alt=""
+                className="w-full lg:h-full block lg:hidden h-75 object-cover object-center rounded-2xl"
               />
             </div>
           </div>
@@ -743,13 +847,18 @@ const page = () => {
               <img
                 src="/images/DeineSEO-img6.webp"
                 alt=""
-                className="w-full lg:h-full h-75 object-cover object-center rounded-2xl"
+                className="w-full lg:h-full lg:block hidden  h-75 object-cover object-center rounded-2xl"
+              />
+              <img
+                src="/images/tab-img6.png"
+                alt=""
+                className="w-full lg:h-full block lg:hidden h-75 object-cover object-center rounded-2xl"
               />
             </div>
           </div>
         </div>
       </section>
-      <section className="relative xl:min-h-261.25 lg:min-h-250 sm:min-h-238.75 md:pb-2.5 pb-0 lg:bg-[url('/images/spacemen-faq.jpg')] md:bg-[url('/images/spacemen-faq2.png')] bg-[url('/images/spacemen-faq2-mobile.png')] bg-cover bg-center">
+      <section className="relative xl:min-h-261.25 lg:min-h-250 sm:min-h-[988px] md:pb-2.5 pb-0 lg:bg-[url('/images/spacemen-faq.jpg')] md:bg-[url('/images/spacemen-faq2.png')] bg-[url('/images/spacemen-faq2-mobile.png')] bg-cover bg-center">
         <div className="max-w-308  md:px-10 px-4 xl:px-4 mx-auto w-full">
           <div className="border-b border-solid border-white-1100/40 lg:pb-10 md:pb-6 pb-4">
             <div className="text-center relative">
@@ -783,7 +892,7 @@ const page = () => {
               <li className="md:w-auto w-full">
                 <CtaButton
                   className="md:w-auto! w-full!"
-                  href="/"
+                  href=""
                   label="Jetzt Kennenlerngespräch buchen"
                   variant="transparent"
                 />
@@ -1184,7 +1293,7 @@ const page = () => {
               <li className="md:w-auto w-full">
                 <CtaButton
                   className="md:w-auto! w-full!"
-                  href="/"
+                  href=""
                   label="Jetzt Kennenlerngespräch buchen"
                   variant="transparent"
                 />
@@ -1369,17 +1478,22 @@ const page = () => {
               Erhalte Antworten auf deine Webdesign-Fragen – wir beraten dich
               persönlich!
             </h3>
-            <CtaButton href="/" label="Jetzt Kennenlerngespräch buchen" />
+            <div className="inline-block sm:w-auto w-full" onClick={open}>
+              <CtaButton href="" label="Jetzt Kennenlerngespräch buchen" />
+            </div>
             <p className="text-white-1100 font-normal mt-3 text-xs leading-[140%]">
               Kostenlos & unverbindlich – entdecke dein SEO-Potenzial.
             </p>
           </div>
           <div className="lg:py-22 lg:hidden block md:text-left text-center">
             <h3 className="text-white-1100 font-semibold xl:text-5xl lg:text-4xl md:text-[40px] text-[28px] md:mb-12 mb-8 leading-[124%] uppercase max-w-152.5 w-full">
-              Erhalte Antworten auf deine Fragen zur Videoproduktion – wir
-              beraten dich persönlich!
+              <span className="md:block hidden">  Erhalte Antworten auf deine Fragen zur Videoproduktion – wir
+                beraten dich persönlich!</span>
+              <span className="block md:hidden">Erhalte Antworten auf deine Webdesign-Fragen – wir beraten dich persönlich!</span>
             </h3>
-            <CtaButton href="/" label="Fragen oder mehr erfahren?" />
+            <div className="inline-block sm:w-auto w-full" onClick={open}>
+              <CtaButton href="" label="Fragen oder mehr erfahren?" />
+            </div>
             <p className="text-white-1100 font-normal mt-3 text-xs leading-[140%]">
               Nummer eintragen - wir rufen zurück!
             </p>
@@ -1457,6 +1571,291 @@ const page = () => {
           </motion.div>
         </div>
       </section>
+      {/**** Request a Quick Modal ****/}
+      <Dialog
+        open={isOpen5}
+        as="div"
+        className="relative z-70 focus:outline-none"
+        onClose={close5}
+      >
+        <div className="fixed inset-0 z-10 bg-black/80 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <DialogPanel
+              transition
+              className="w-full max-w-360 relative md:pt-30 md:pb-16.75 py-22 md:px-10 px-4 bg-[url(/images/Modal-bg2.jpg)] bg-no-repeat bg-cover bg-center shadow-4xl rounded-2xl mx-auto backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+            >
+              <div className="w-full max-w-249.25 mx-auto">
+                <Button
+                  className="absolute md:top-18 md:right-18 top-4 right-4 cursor-pointer z-100 inline-flex items-center w-6 h-6"
+                  onClick={close5}
+                >
+                  <img src="/images/CloseButton.svg" alt="" />
+                </Button>
+                <div className="text-center lg:pb-12 pb-10 lg:border-b-0 border-b border-solid border-white-1100">
+                  <h4 className="text-white-1100 md:text-2xl text-base md:leading-[140%] leading-[124%] font-semibold">
+                    Nur für kurze Zeit: Dein kostenloses Kennenlerngespräch
+                  </h4>
+                  <p className="text-white-1100 text-base mt-5 leading-[140%] font-normal">
+                    Nutze diese Chance für ein kostenloses, unverbindliches
+                    Kennenlerngespräch. Erhalte konkrete Antworten und erste
+                    Impulse für deine Strategie – sichere dir jetzt deinen
+                    Termin, solange noch Verfügbarkeit besteht.“
+                  </p>
+                </div>
+                <div className="lg:pt-0 pt-10">
+                  <div className="flex md:max-w-135 max-w-full xl:max-w-249.25 xl:flex-row flex-col w-full mx-auto bg-white-1100 rounded-2xl">
+                    <div className="bg-white-1100 md:rounded-tl-2xl rounded-t-2xl md:rounded-bl-2xl  xl:py-7.25 py-6 px-6 xl:mx-0 md:mx-auto mx-0 md:w-[42%]  xl:w-[36%] w-full">
+                      <Link
+                        href=""
+                        className="xl:mb-13.5 mb-9 md:mb-11.25 inline-flex"
+                      >
+                        <img
+                          src="images/benchmedia.svg"
+                          alt=""
+                          className="xl:h-auto h-3.25"
+                        />
+                      </Link>
+                      <h3 className="xl:text-xl font-extrabold md:text-[13px] md:leading-4 text-xl leading-6 xl:leading-6 text-orange-1100 uppercase">
+                        KENNENLERNGESPRÄCH
+                      </h3>
+                      <p className="xl:text-xs text-[8px] font-light leading-2.25 xl:leading-3.5 text-black-1200 -tracking-[0.12px] py-2 xl:py-3">
+                        30 Minuten - Google Meet
+                      </p>
+                      <h4 className="text-black-1200 text-[10px] xl:text-base font-bold leading-sm xl:leading-5.5 pb-3 md:pb-1">
+                        ONLINE MARKETING BERATUNG
+                      </h4>
+                      <p className="text-black-1200 xl:text-sm text-[9px] leading-3 font-semibold xl:leading-4.75">
+                        DU VERDIENST ES, ONLINE SICHTBAR ZU SEIN!
+                      </p>
+                      <div className="xl:pt-8 pt-4">
+                        <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px] pb-4">
+                          Im Kennenlerngespräch analysieren wir gemeinsam deine
+                          Online-Präsenz und besprechen, wie du deine
+                          Reichweite, Sichtbarkeit und den Erfolg steigern
+                          kannst.
+                        </p>
+                        <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px] pb-4">
+                          <span className="text-orange-1100">
+                            Wähle einfach deinen Wunschtermin im Kalender aus
+                          </span>{" "}
+                          und gib deine Kontaktdaten ein. Du erhältst im
+                          Anschluss eine E-Mail mit deinem persönlichen
+                          Meeting-Link.
+                        </p>
+                        <p className="xl:text-xs md:text-[8px] md:leading-2.25 text-sm leading-4.5 font-normal xl:leading-3.5 -tracking-[0.12px]">
+                          Wir freuen uns auf unser Treffen!
+                        </p>
+                      </div>
+                    </div>
+                    <div className="md:w-[64%] w-full xl:mx-0 md:mx-auto mx-0">
+                      <MeetingEmbed />
+                    </div>
+                  </div>
+                  <div className="w-full sm:mt-12 mt-10">
+                    <div className="w-full text-right">
+                      <p className="font-bold md:text-base text-sm leading-[140%] text-white/50">
+                        Oder möchtest du eine Kurzanalyse deiner Webseite per
+                        E-Mail erhalten?
+                      </p>
+                      <p className="font-normal text-xs mt-3 leading-[140%] text-white/50">
+                        Kein Problem – gib einfach deine URL an und wir schicken
+                        dir die wichtigsten Punkte.
+                      </p>
+                    </div>
+                    <div className="flex sm:flex-row flex-col gap-2 justify-end items-center sm:mt-10 mt-6">
+                      <input
+                        type="email"
+                        placeholder="E-Mail"
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        className="bg-black-1100 border border-grey-1100/20 rounded-lg h-12.25 px-6  text-white/50 text-xs font-normal sm:w-50 w-full focus:outline-none focus:border-grey-1100"
+                      />
+                      <div className="overflow-hidden flex-1 relative sm:w-114 w-full">
+                        <input
+                          type="url"
+                          placeholder="Deine URL"
+                          value={urlInput}
+                          onChange={(e) => setUrlInput(e.target.value)}
+                          className="bg-black-1100 border border-grey-1100/20 rounded-lg h-12.25 px-6  text-white/50 text-xs font-normal focus:outline-none w-full focus:border-grey-1100"
+                        />
+                        <button className="absolute top-0 right-0 bg-orange-1100 w-26 h-12.25 cursor-pointer text-white-1100 text-xs font-normal rounded-br-lg rounded-tr-lg hover:brightness-110 transition-all whitespace-nowrap">
+                          Schicken
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
+        <Dialog
+        open={isOpen}
+        as="div"
+        className="relative z-1000 focus:outline-none"
+        onClose={close}
+      >
+        <div className="fixed inset-0 z-10 bg-black/80 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <DialogPanel
+              transition
+              className="w-full max-w-146.25 mx-auto backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+            >
+              <div className="relative bg-[url(/images/Modal-bg.png)] bg-no-repeat bg-cover bg-center shadow-4xl rounded-2xl mx-auto max-w-247.75 w-full">
+                <Button
+                  className="absolute top-5 right-5 cursor-pointer z-100 inline-flex items-center w-6 h-6"
+                  onClick={close}
+                >
+                  <img src="/images/CloseButton.svg" alt="" />
+                </Button>
+                <div className="bg-white/10 lg:px-6 px-5 py-4 rounded-t-2xl">
+                  <h4 className="text-white-1100 md:text-xl text-base md:leading-[140%] leading-[124%] font-semibold">
+                    Kostenlose Website-Analyse erhalten!
+                  </h4>
+                </div>
+                <div className="md:p-5 px-4 py-2">
+                  <p className="text-white-1100 text-sm  leading-[124%] font-normal">
+                    Erfahre mehr über das Potenzial deiner Website! Unsere
+                    Analyse zeigt dir in wenigen Schritten, wie du deine
+                    Performance steigern kannst. Einfach Kontaktdaten eingeben,
+                    und wir senden dir die Analyse per Mail zu.
+                  </p>
+                </div>
+                <div className="lg:px-6 md:px-5 px-4 md:pt-5 pt-2 pb-8">
+                  <div className="">
+                    <form>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div>
+                          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+                            Name
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder=""
+                            value={form.name}
+                            onChange={handleChange}
+                            className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+                            Unternehmensname
+                          </label>
+                          <input
+                            type="text"
+                            name="company"
+                            placeholder=""
+                            value={form.company}
+                            onChange={handleChange}
+                            className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+                            Telefonnummer
+                          </label>
+                          <input
+                            type="text"
+                            name="phone"
+                            placeholder=""
+                            value={form.phone}
+                            onChange={handleChange}
+                            className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+                            E-Mail Adresse
+                          </label>
+                          <input
+                            type="email"
+                            name="email"
+                            placeholder=""
+                            value={form.email}
+                            onChange={handleChange}
+                            className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-11.5 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-white-1100 text-sm leading-[124%] font-normal block mb-2">
+                            Gibt es spezielle Fragen oder Anliegen?
+                          </label>
+                          <input
+                            type="text"
+                            name="questions"
+                            placeholder=""
+                            value={form.questions}
+                            onChange={handleChange}
+                            className="input-style bg-black-1200/40 hover:bg-white/2 px-4 border border-solid border-white/50 hover:border-grey-1100 rounded-sm h-20 w-full text-white-1100 placeholder:text-white-1100 text-base leading-[140%] font-normal active:bg-white/10 focus:bg-white/10"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-8 text-center">
+                        <Link
+                          href={"#"}
+                          onClick={open}
+                          className="flex items-center justify-center bg-orange-1100 w-full hover:bg-white-1100 hover:text-black-1100 text-white-1100 cursor-pointer transition px-5 h-11.5 rounded-sm font-normal text-base leading-[140%]"
+                        >
+                          Website-Analyse anfordern
+                        </Link>
+                        <p className="text-white-1100 font-normal text-sm leading-[124%] mt-4 text-center">
+                          Kostenlos & unverbindlich – nur für kurze Zeit
+                          verfügbar.
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
+      <Dialog
+        open={isOpen2}
+        as="div"
+        className="relative z-10 focus:outline-none"
+        onClose={close2}
+      >
+        <div className="fixed inset-0 z-10 bg-black/80 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <DialogPanel
+              transition
+              className="w-full max-w-146.25 mx-auto backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+            >
+              <div className="relative bg-[url(/images/Modal-bg.png)] bg-no-repeat bg-cover bg-center shadow-4xl rounded-2xl mx-auto max-w-247.75 w-full">
+                <Button
+                  className="absolute top-5 right-5 cursor-pointer z-100 inline-flex items-center w-6 h-6"
+                  onClick={close2}
+                >
+                  <img src="/images/CloseButton.svg" alt="" />
+                </Button>
+                <div className="bg-white/10 lg:px-6 px-5 py-4 rounded-t-2xl">
+                  <h4 className="text-white-1100 md:text-xl text-base md:leading-[140%] leading-[124%] font-semibold">
+                    Danke für deine Anfrage!
+                  </h4>
+                </div>
+                <div className="md:p-5 px-4 py-2 border-b border-solid border-white/20">
+                  <p className="text-white-1100 text-sm  leading-[124%] font-normal">
+                    Wir melden uns schnellstmöglich bei dir.
+                  </p>
+                </div>
+                <div className="p-5 text-right">
+                  <button className="bg-orange-1100 w-full max-w-36.5 ml-aut0 hover:bg-white-1100 hover:text-black-1100 text-white-1100 cursor-pointer transition px-5 h-9.5 rounded-sm font-normal text-sm leading-[124%]">
+                    Zur Hauptseite
+                  </button>
+                </div>
+              </div>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 };
